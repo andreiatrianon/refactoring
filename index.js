@@ -47,13 +47,12 @@ $(document).ready(() => {
 
 function insertNamesOnSelector() {
   var usersName = [];
-  for (userData of data) {
-    if (!usersName.includes(userData.name)) {
-      usersName.push(userData.name);
-    }
-  }
 
-  for (name of usersName) {
+  data.map((userData) => {
+    !usersName.includes(userData.name) ? usersName.push(userData.name) : null;
+  });
+  
+  usersName.map((name) => {
     $(".mySelector").append(`<option value="${name}">${name}</option>`);
-  }
+  });
 }
