@@ -1,0 +1,44 @@
+.title {
+  text-align: center;
+  margin: 50px 0 50px 0;
+  font-size: 2rem;
+  font-family: "Arial"
+}
+
+.tasksList {
+  font-family: "Arial";
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.tasks-list-item {
+  padding-top: 15px;
+  padding-left: 15px;
+    padding-right: 15px;
+  padding-bottom: 15px;
+       display: block;
+  background-color: #ececec;
+  border-bottom: 5px pink;
+  margin: 0 0 10px 0;
+  border-radius: 3px;
+  box-shadow: 0px 3px 9px -2px rgba(0, 0, 0, 0.44);
+}
+
+.tasksList {
+        font-family: "Arial";
+        width: 40%;
+}
+.tasks-list-item { color: white; }
+
+select {
+  border: none;
+background: none;
+-webkit-appearance: none;
+border-bottom: 2px solid black;
+font-size: 28px;
+margin-left: 10px;
+border-radius: 0;
+}

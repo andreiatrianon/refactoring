@@ -13,22 +13,42 @@ $(document).ready(() => {
 
   var seletor = document.getElementsByClassName("mySelector")[0];
   seletor.addEventListener('change', function(e) {
+    var taskList = document.getElementsByClassName("tasksList")[0];
+    taskList.innerHTML = "";
+
     let selectedUserName = e.target.value;
-    
-    // o _ vem do Loadash. O que é isso?
+
+    // o _ é o Loadash. O que é isso?
     var filteredArray = _.filter(data, {name: selectedUserName});
 
 
-    for (post of filteredArray) {
+
+
+    for (task of filteredArray) {
       var list = document.createElement("li");
-      const header = document.createElement("span");
-      header.textContent = "O que a " + selectedUserName + " disse:";
       let text = document.createElement("span");
-      text.textContent = post.text;
-      list.appendChild(header);
+      list.dataset.id=task.id;
+      text.textContent = task.title;
       list.appendChild(text);
-      postList = document.getElementsByClassName("posts-list")[0];
-      postList.appendChild(list);
+      taskList = document.getElementsByClassName("tasksList")[0];
+      list.className = "tasks-list-item";
+      taskList.appendChild(list);
+    }
+
+
+    //risca o texto
+    var allItensFromList = document.getElementsByTagName("li");
+    for (listItem of allItensFromList) {
+      let itemId = listItem.getAttribute('data-id');
+      for (task of filteredArray) {
+        if (parseInt(itemId) == task.id) {
+          if (task.completed) {
+            listItem.style = "text-decoration: line-through;"
+          }
+        }
+      }
+
+
     }
   });
 });
