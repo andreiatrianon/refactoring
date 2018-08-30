@@ -1,15 +1,7 @@
 // data is a variable from data.js
 $(document).ready(() => {
-  var usersName = [];
-  for (userData of data) {
-    if (!usersName.includes(userData.name)) {
-      usersName.push(userData.name);
-    }
-  }
 
-  for (name of usersName) {
-    $(".mySelector").append(`<option value="${name}">${name}</option>`);
-  }
+  insertNamesOnSelector();
 
   var seletor = document.getElementsByClassName("mySelector")[0];
   seletor.addEventListener('change', function(e) {
@@ -52,3 +44,16 @@ $(document).ready(() => {
     }
   });
 });
+
+function insertNamesOnSelector() {
+  var usersName = [];
+  for (userData of data) {
+    if (!usersName.includes(userData.name)) {
+      usersName.push(userData.name);
+    }
+  }
+
+  for (name of usersName) {
+    $(".mySelector").append(`<option value="${name}">${name}</option>`);
+  }
+}
