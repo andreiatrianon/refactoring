@@ -46,13 +46,20 @@ $(document).ready(() => {
 });
 
 function insertNamesOnSelector() {
-  var usersName = [];
+  var usersName = getUserNamesFromDB();
+  createOptionsOnSelector(usersName);
+}
 
+function getUserNamesFromDB() {
+  var usersName = [];
   data.map((userData) => {
     !usersName.includes(userData.name) ? usersName.push(userData.name) : null;
   });
-  
-  usersName.map((name) => {
+  return usersName;
+}
+
+function createOptionsOnSelector(userNamesFromDB) {
+  userNamesFromDB.map((name) => {
     $(".mySelector").append(`<option value="${name}">${name}</option>`);
   });
 }
