@@ -26,10 +26,17 @@ function createOptionsOnSelector(userNamesFromDB) {
 function inserTasksOnList() {
   $(".tasksList").html = "";
   let selectedUserName = $(this).find(":selected").text();
+  filteredArray = getTasksFromDB(selectedUserName);
+  createItemsOnList(filteredArray);
+  setTaskCompleteOnList(filteredArray);
+}
 
+function getTasksFromDB(selectedUserName) {
   // o _ é o Loadash
-  var filteredArray = _.filter(data, {name: selectedUserName});
+  return filteredArray = _.filter(data, {name: selectedUserName});
+}
 
+function createItemsOnList(filteredArray) {
   for (task of filteredArray) {
     var list = document.createElement("li");
     let text = document.createElement("span");
@@ -40,7 +47,9 @@ function inserTasksOnList() {
     list.className = "tasks-list-item";
     taskList.appendChild(list);
   }
+}
 
+function setTaskCompleteOnList(filteredArray) {
   //risca o texto
   var allItensFromList = document.getElementsByTagName("li");
   for (listItem of allItensFromList) {
