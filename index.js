@@ -37,16 +37,11 @@ function getTasksFromDB(selectedUserName) {
 }
 
 function createItemsOnList(filteredArray) {
-  for (task of filteredArray) {
-    var list = document.createElement("li");
-    let text = document.createElement("span");
-    list.dataset.id=task.id;
-    text.textContent = task.title;
-    list.appendChild(text);
-    taskList = document.getElementsByClassName("tasksList")[0];
-    list.className = "tasks-list-item";
-    taskList.appendChild(list);
-  }
+  filteredArray.map((task) => {
+    $('.tasksList').append(`
+    <li data-id="${task.id}" class="tasks-list-item"><span>${task.title}</span></li>
+    `);
+  });
 }
 
 function setTaskCompleteOnList(filteredArray) {
